@@ -261,12 +261,11 @@ void unpauseGame() {
     sounds.play();
 }
 void speedUp() {
-    fall.speed *= 0.5f;
+    fall.speed /= 3.f;
 }
 void speedDown() {
-    fall.speed *= 2.0f;
+    fall.speed *= 3.0f;
 }
-
 char fromKtoS(const sf::Keyboard::Key& k) {
     char ret;
     switch (k) {
