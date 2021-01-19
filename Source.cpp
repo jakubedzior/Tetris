@@ -114,14 +114,18 @@ int WinMain()
                         }
                     }
                     else if (menu.ifInMenu("highscoresMenu") && highscoresMenu.getInsertMode()) {
-                        if (event.key.code == sf::Keyboard::BackSpace)
+                        switch (event.key.code) {
+                        case sf::Keyboard::Enter:
+                            if (highscoresMenu.ifLongEnough()) {
+                                highscoresMenu.setInsertMode(false);
+                                menu.openMenu("mainMenu");
+                                file.saveFinishedGame();
+                            }
+                            break;
+                        case sf::Keyboard::BackSpace:
                             highscoresMenu.removeLetter();
-                        if (event.key.code == sf::Keyboard::Enter && highscoresMenu.ifLongEnough()) {
-                            highscoresMenu.setInsertMode(false);
-                            file.saveFinishedGame();
-                            menu.openMenu("mainMenu");
+                            break;
                         }
-
                         char letter = fromKtoS(event.key.code);
                         if (letter != '?')
                             highscoresMenu.addLetter(letter);
@@ -129,7 +133,8 @@ int WinMain()
                     else if (menu.ifInMenu("highscoresMenu") && highscoresMenu.getShowPoints()) {
                         switch (event.key.code) {
                         case sf::Keyboard::Escape:
-                            endGame();
+                            highscoresMenu.setShowPoints(false);
+                            menu.openMenu("mainMenu");
                             break;
                         }
                     }
@@ -137,7 +142,6 @@ int WinMain()
             }
             window.clear(sf::Color::Color(195, 195, 195));
             background.drawEmpty();
-            //background.drawLines(0.45f, 2.0f);
             menu.draw();
             window.display();
         }
@@ -178,7 +182,8 @@ int WinMain()
                         rotate(1);
                         break;
                     case sf::Keyboard::Space:
-                        currentRender.drop();
+                        if (currentRender.whenDrop())
+                            nextBlock();
                         break;
                     case sf::Keyboard::F1:
                         pauseGame("pauseMenu");

@@ -177,14 +177,16 @@ public:
             draw(0, PREDICTED_offset_y, 80);
         }
     }
-    void drop() {
+    bool whenDrop() {
         while (true) {
             if (!ifCollides("bottom")) {
                 obj_pos.y += size;
                 draw();
             } else { break; }
         }
-        fall.counter = 0;
+        if (ifCollides("left") && ifCollides("right") && ifCollides("bottom"))
+            return true;
+        return false;
     }
     bool ifCollides(const char side[5] = "", bool border = true) {
         int offset_x = 0;

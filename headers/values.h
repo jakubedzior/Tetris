@@ -39,13 +39,13 @@ struct Previous {
 Previous previous[400];   // field_size.area
 
 class { public:
-    int init_speed = 0.4 * fps;
+    float init_speed = 0.8f * fps;
     float speed = init_speed; // step [Hz] = 100 / fallSpeed
     int counter = 0;
 public:
     void increaseSpeed(int times = 1) {
         for (int i = 0; i < times; i++)
-            speed *= 0.75;
+            speed *= 0.75f;
     }
 } fall;
 

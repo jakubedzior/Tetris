@@ -1,18 +1,16 @@
 void endRound() {
     started = false;
     sounds.stop();
-    if (!highscoresMenu.whenNew(points.getPoints())) {
-        menu.openMenu("highscoresMenu");
+    levelsMenu.unlockLevels(points.getLevel());
+
+    if (highscoresMenu.whenNew(points.getPoints()))
+        highscoresMenu.setInsertMode(true);
+    else {
         highscoresMenu.setShowPoints(true);
         file.saveFinishedGame();
     }
-    else {
-        menu.openMenu("highscoresMenu");
-        highscoresMenu.setInsertMode(true);
-    }
-}
-void endGame() {
-    window.close();
+        
+    menu.openMenu("highscoresMenu");
 }
 void nextBlock(bool store_shape = true) {   
     if (store_shape)

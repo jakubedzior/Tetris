@@ -152,7 +152,7 @@ public:
 	void manualInsert() {
 		fp = fopen("miscellaneous/data.dat", "w+b");
 		
-		bool show_continue = false;
+		bool show_continue = true;
 		fwrite(&show_continue, sizeof(bool), 1, fp);
 
 		int levels_unlocked = 0;
@@ -163,7 +163,7 @@ public:
 		for (int i = 0; i < score_amount; i++) {
 			for (int j = 0; j < sizeof(name); j++)
 				highscores[i].name[j] = name[j];
-			highscores[i].score = i*10000;
+			highscores[i].score = i*1000;
 		}
 
 		for (int i = 0; i < score_amount; i++) {
@@ -171,7 +171,7 @@ public:
 		}
 
 
-		int points = 0;
+		int points = 9900;
 		fwrite(&points, sizeof(int), 1, fp);
 
 		int lines = 0;
