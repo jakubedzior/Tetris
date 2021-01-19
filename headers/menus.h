@@ -499,7 +499,7 @@ public:
 			options[selected_index].setFillColor(sf::Color::Red);
 		}
 		else {
-			for (int i = 0; i < option_amount - 1; i++)
+			for (int i = 0; i < levels_unlocked; i++)
 				moveLeft();
 		}
 	}
@@ -512,7 +512,7 @@ public:
 			options[selected_index].setFillColor(sf::Color::Red);
 		}
 		else {
-			for (int i = 0; i < option_amount - 1; i++)
+			for (int i = 0; i < levels_unlocked; i++)
 				moveRight();
 		}
 	}
