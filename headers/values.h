@@ -17,6 +17,8 @@ const int level_amount = 11;
 
 const int fps = 50;
 
+const sf::Color darker_color = { 200, 200, 200, 125 };
+
 
 class { public:
     const int x1 = -2 * size;
@@ -45,7 +47,7 @@ class { public:
 public:
     void increaseSpeed(int times = 1) {
         for (int i = 0; i < times; i++)
-            speed *= 0.75f;
+            speed *= 0.8f;
     }
 } fall;
 

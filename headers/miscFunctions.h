@@ -35,10 +35,13 @@ void nextBlock(bool store_shape = true) {
     }
 }
 void hold() {
+    currentRender.just_dropped = false;
     if (!holdInitialized) {
         holdRender = currentRender;
+        sf::Vector2f pos = holdRender.getObjPos();
         holdRender.moveTo(render_positions.hold);
         nextBlock(false);
+        currentRender.moveTo(pos);
 
         holdInitialized = true;
     } else {
@@ -266,6 +269,7 @@ void speedUp() {
 void speedDown() {
     fall.speed *= 3.0f;
 }
+
 char fromKtoS(const sf::Keyboard::Key& k) {
     char ret;
     switch (k) {

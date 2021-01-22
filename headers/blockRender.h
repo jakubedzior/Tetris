@@ -8,7 +8,7 @@ private:
 
 public:
     int shapeId;
-
+    bool just_dropped = false;
 
     BlockRender() {
         brickObject.setTexture(texture);
@@ -147,14 +147,17 @@ public:
             }
         }
     }
-    void draw(int offset_x = 0, int offset_y = 0, int opacity = 255) {
+    void draw(int offset_x = 0, int offset_y = 0, sf::Color color = sf::Color::White) {
         for (int i = 0; i < 25; i++) {
             if (blockShape[i] == 1) {
                 int x = size * (i / 5) + obj_pos.x + field_offset.x + offset_x;
                 int y = size * (i % 5) + obj_pos.y + field_offset.y + offset_y;
                 brickObject.setPosition(x, y);  
 
-                brickObject.setColor(sf::Color(255, 255, 255, opacity));
+                brickObject.setColor(color);
+                if (just_dropped) {
+                    brickObject.setColor(darker_color);
+                }
 
                 window.draw(brickObject);
             }
@@ -174,7 +177,7 @@ public:
         }
         obj_pos.y = ORIG_obj_pos_y;
         if (PREDICTED_offset_y != 0) {
-            draw(0, PREDICTED_offset_y, 80);
+            draw(0, PREDICTED_offset_y, darker_color);
         }
     }
     bool whenDrop() {
@@ -184,8 +187,12 @@ public:
                 draw();
             } else { break; }
         }
-        if (ifCollides("left") && ifCollides("right") && ifCollides("bottom"))
+        if (ifCollides("left") && ifCollides("right") && ifCollides("bottom")) {
+            fall.counter = fall.speed;
             return true;
+        }
+        fall.counter = 0;
+        just_dropped = true;
         return false;
     }
     bool ifCollides(const char side[5] = "", bool border = true) {
