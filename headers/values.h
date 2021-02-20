@@ -15,7 +15,7 @@ const int score_amount = 10;
 const int score_name_size = 10;
 const int level_amount = 11;
 
-const int fps = 50;
+const int fps = 100;
 
 const sf::Color darker_color = { 200, 200, 200, 125 };
 
@@ -41,13 +41,13 @@ struct Previous {
 Previous previous[400];   // field_size.area
 
 class { public:
-    float init_speed = 0.8f * fps;
+    float init_speed = 1.2f * fps;
     float speed = init_speed; // step [Hz] = 100 / fallSpeed
     int counter = 0;
 public:
     void increaseSpeed(int times = 1) {
         for (int i = 0; i < times; i++)
-            speed *= 0.8f;
+            speed *= 0.85f;
     }
 } fall;
 
