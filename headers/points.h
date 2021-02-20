@@ -26,11 +26,12 @@ public:
 	void setStartLevel() { 
 		start_level = level;
 		int temp_points = points;
-		for(int i = 0; i < 100; i++)
+		for (int i = 0; i < level_amount; i++)
 			if (temp_points >= 10000) {
 				start_level -= 1;
 				temp_points -= 10000;
 			}
+			else break;
 	}
 	void whenNextLevel() {
 		if (((float)points / (level + 1 - start_level)) >= 10000) {
