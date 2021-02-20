@@ -1,4 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS
+#pragma comment(linker, "/SUBSYSTEM:windows /ENTRY:mainCRTStartup")
 #pragma warning( disable : 4244 ) 
 
 #include <SFML/Graphics.hpp>
@@ -21,7 +22,7 @@
 #include "headers/miscFunctions.h"
 
 
-int WinMain()
+int main()
 {
     sf::Image icon;
     icon.loadFromFile("miscellaneous/icon.png");
@@ -43,7 +44,7 @@ int WinMain()
     window.setView(view);
     menu.openMenu("mainMenu");
     float prev_window_height = window.getSize().y;
-
+    
     while (window.isOpen())
     {
         if (!started)   // ouside game
