@@ -235,8 +235,8 @@ public:
 
 class KeybindingsMenu {
 private:
-	const int string_amount = 9;
-	std::string strings[9]{
+	const int string_amount = 10;
+	std::string strings[10]{
 		"Mouse:",
 		"- move:  change position",
 		"- hold left:  temporary speed increase",
@@ -246,9 +246,10 @@ private:
 		"- A, D:  rotate",
 		"- space:  drop to the bottom",
 		"- F1:  pause / unpause",
-		"- Escape:  save and quit"
+		"- Escape:  save and quit",
+		"- F10: change music"
 	};
-	float spacings[9] = { 0.f, 0.04f, 0.07f, 0.1f, 0.16f, 0.2f, 0.23f, 0.27f, 0.3f };
+	float spacings[10] = { 0.f, 0.04f, 0.07f, 0.1f, 0.16f, 0.2f, 0.23f, 0.27f, 0.3f, 0.34f };
 
 public:
 	void draw() {
@@ -292,8 +293,8 @@ public:
 
 class PauseMenu {
 private:
-	const int string_amount = 9;
-	std::string strings[9]{
+	const int string_amount = 10;
+	std::string strings[10]{
 		"Mouse:",
 		"- move:  change position",
 		"- hold left:  temporary speed increase",
@@ -303,9 +304,10 @@ private:
 		"- A, D:  rotate",
 		"- space:  drop to the bottom",
 		"- F1:  pause / unpause",
-		"- Escape:  save and quit"
+		"- Escape:  save and quit",
+		"- F10: change music"
 	};
-	float spacings[9] = {0.f, 0.04f, 0.07f, 0.1f, 0.16f, 0.2f, 0.23f, 0.27f, 0.3f};
+	float spacings[10] = {0.f, 0.04f, 0.07f, 0.1f, 0.16f, 0.2f, 0.23f, 0.27f, 0.3f, 0.34f };
 public:
 	void draw() {
 		sf::RectangleShape dim(window_size);
