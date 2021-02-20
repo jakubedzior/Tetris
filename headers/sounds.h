@@ -1,6 +1,6 @@
 class Sounds {
 	sf::Music music;
-	sf::String titles[3] = { "Tetris.wav" , "Fly To You.wav", "Take on Me.wav" };
+	sf::String titles[2] = { "Tetris.wav" , "Tetris-cover.wav" };
 	int index = 0;
 public:
 	Sounds() {
@@ -13,7 +13,7 @@ public:
 		stop();
 
 		index++;
-		if (index == 3)
+		if (index == 2)
 			index = 0;
 		music.openFromFile("sounds/" + titles[index]);
 
