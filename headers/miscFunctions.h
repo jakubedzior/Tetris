@@ -209,6 +209,8 @@ void startNewGame(int level) {
     fall.increaseSpeed(points.getLevel());
     fall.counter = 0;
 
+    currentRender.moveTo(render_positions.current);
+
     sounds.play();
 }
 void drawText() {
